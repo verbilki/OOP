@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "SkyBank"
+name = "OOP"
 version = "0.0.1"
-description = "Курсовая работа по Блоку 3 курса по Python на платформе SkyPro ученика Олега Жадана (поток Prof 40.0)."
+description = "Домашнее задание по уроку 14.1 курса по Python на платформе SkyPro ученика Олега Жадана (поток Prof 40.0)."
 authors = ["Oleg Zhadan"]
 license = "GPL 3.0"
 readme = "README.md"
@@ -52,6 +52,12 @@ exclude = '''
 
 [tool.isort]
 line_length = 119
+
+[tool.coverage.report]
+exclude_also = [
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
 
 [build-system]
 requires = ["poetry-core"]
