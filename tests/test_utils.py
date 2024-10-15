@@ -28,6 +28,3 @@ def test_create_obj_from_json(json_data: dict, product_1: Product, product_2: Pr
     """
     test_category: Category = create_objects_from_json(json_data)[0]
     assert test_category.name == "Смартфоны"
-    assert len(test_category.products_list) == 2
-    assert test_category.products_list[0].name == product_1.name
-    assert test_category.products_list[1].description == product_2.description

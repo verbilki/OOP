@@ -3,8 +3,6 @@ import pytest
 from src.category import Category
 from src.product import Product
 
-# from src.product_iterator import ProductIterator
-
 
 @pytest.fixture
 def first_product() -> Product:
@@ -19,19 +17,6 @@ def product_dict() -> dict:
         "price": 180000.0,
         "quantity": 5,
     }
-
-
-@pytest.fixture
-def second_category() -> Category:
-    return Category(
-        name="хлеб",
-        description="хлебобулочные изделия",
-        products=[
-            Product("батон", "батон нарезной", 10.0, 10),
-            Product("хлеб", "хлеб бородинский", 20.0, 20),
-            Product("хлеб", "хлеб дарницкий", 30.0, 30),
-        ],
-    )
 
 
 @pytest.fixture
@@ -58,9 +43,17 @@ def first_category() -> Category:
     )
 
 
-# @pytest.fixture
-# def product_iterator(first_category):
-#     return ProductIterator(first_category)
+@pytest.fixture
+def second_category() -> Category:
+    return Category(
+        name="хлеб",
+        description="хлебобулочные изделия",
+        products=[
+            Product("батон", "батон нарезной", 10.0, 10),
+            Product("хлеб", "хлеб бородинский", 20.0, 20),
+            Product("хлеб", "хлеб дарницкий", 30.0, 30),
+        ],
+    )
 
 
 @pytest.fixture
