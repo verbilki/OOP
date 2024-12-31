@@ -20,7 +20,7 @@ def product_dict() -> dict:
 
 
 @pytest.fixture
-def product() -> Product:
+def test_product() -> Product:
     return Product("молоко", "молоко ультрапастеризованное 1л", 40.0, 100)
 
 
@@ -32,6 +32,11 @@ def product_1() -> Product:
 @pytest.fixture
 def product_2() -> Product:
     return Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+
+
+@pytest.fixture
+def empty_category() -> Category:
+    return Category(name="Категория без продуктов", description="Категория без продуктов")
 
 
 @pytest.fixture
