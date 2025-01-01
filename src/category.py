@@ -6,7 +6,6 @@ from src.product import Product
 class Category:
     name: str
     description: str
-    products: list[Product]
     category_count = 0
     product_count = 0
 
@@ -39,10 +38,14 @@ class Category:
 
 
 if __name__ == "__main__":
-    product1 = Product("огурец", "256GB, Серый цвет, 200MP камера", 1.0, 5)
-    product2 = Product("морковь", "512GB, Gray space", 2.0, 8)
-    product3 = Product("лук", "1024GB, Синий", 31000.0, 14)
-    cat1 = Category("овощи", "любые овощи", [product1, product2])
+    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 1.0, 5)
+    product2 = Product("Iphone 15", "512GB, Gray space", 2.0, 8)
+    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+    cat1 = Category(
+        "Смартфоны",
+        "Смартфоны, как средство не только коммуникации, " "но и получения дополнительных функций для удобства жизни",
+        [product1, product2],
+    )
     # print(cat1.products)
     # cat1.add_product(product1)
     # print(cat1.products)
