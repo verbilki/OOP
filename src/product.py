@@ -47,7 +47,7 @@ class Product:
         raise TypeError(f"Объект {str(other)} не является экземпляром класса {self.__class__}.")
 
     @classmethod
-    def new_product(cls, product: dict) -> 'Product':
+    def new_product(cls, product: dict) -> "Product":
         if not isinstance(product, dict):
             raise TypeError("Аргумент product должен быть типа dict.")
 

@@ -16,7 +16,7 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
 
-    def __str__(self):
+    def __str__(self) -> str:
         quantity = sum(product.quantity for product in self.__products)
         return f"{self.name.title()}, количество продуктов: {quantity} шт."
 
@@ -36,6 +36,15 @@ class Category:
         """
         return "\n".join(str(product) for product in self.__products)
 
+    @property
+    def products_list(self) -> list:
+        """
+        Property, returning a list of all products in the category.
+
+        :return: list of all products in the category.
+        """
+        return self.__products
+
 
 if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 1.0, 5)
@@ -43,12 +52,7 @@ if __name__ == "__main__":
     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
     cat1 = Category(
         "Смартфоны",
-        "Смартфоны, как средство не только коммуникации, " "но и получения дополнительных функций для удобства жизни",
+        "Смартфоны, как средство не только коммуникации, "
+        "но и получения дополнительных функций для удобства жизни",
         [product1, product2],
     )
-    # print(cat1.products)
-    # cat1.add_product(product1)
-    # print(cat1.products)
-    # product4.price = 10
-    # print(cat1.products)
-    # print(cat1)

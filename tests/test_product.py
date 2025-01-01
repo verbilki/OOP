@@ -191,8 +191,8 @@ def test_product_addition_with_different_class() -> None:
     product1 = Product("Laptop", "High-end gaming laptop", 1500.0, 5)
     non_product_instance = "Not a Product instance"
     with pytest.raises(
-            TypeError,
-            match="Объект Not a Product instance не является экземпляром" " класса <class 'src.product.Product'>.",
+        TypeError,
+        match="Объект Not a Product instance не является экземпляром" " класса <class 'src.product.Product'>.",
     ):
         product1 + non_product_instance
 
