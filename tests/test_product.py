@@ -1,3 +1,4 @@
+from typing import Any
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -124,3 +125,91 @@ def test_price_setter_lower_price_not_confirmed(mock_input: MagicMock, product_1
     assert product_1.price == 210000.0
     product_1.price = 200000.0
     assert product_1.price == 210000.0
+
+
+def test_product_addition() -> None:
+    """
+    Test the __add__ method of the Product class.
+
+    This function tests the addition of two Product instances with positive prices and quantities.
+    It asserts that the total price calculated by the __add__ method is correct.
+
+    Returns:
+    None: The function asserts the result of the __add__ method against the expected total price.
+    """
+    product1 = Product("Apple", "Fresh apple", 2.0, 10)
+    product2 = Product("Banana", "Ripe banana", 1.5, 20)
+    total_price = product1 + product2
+    assert total_price == (2.0 * 10) + (1.5 * 20)
+
+
+def test_product_addition_with_zero_price() -> None:
+    """
+    Test the __add__ method of the Product class when one product has zero price.
+
+    This function tests the addition of two Product instances where one has zero price.
+    It asserts that the total price calculated by the __add__ method is correct.
+
+    Returns:
+    None: The function asserts the result of the __add__ method against the expected total price.
+    """
+    product1 = Product("Water", "Bottled water", 0.0, 10)
+    product2 = Product("Juice", "Orange juice", 2.5, 5)
+    total_price = product1 + product2
+    assert total_price == (0.0 * 10) + (2.5 * 5)
+
+
+def test_product_addition_with_negative_prices() -> None:
+    """
+    Test the __add__ method of the Product class with negative prices.
+
+    This function tests the addition of two Product instances where both have negative prices
+    but positive quantities. It asserts that the total price calculated by the __add__ method
+    is correct.
+
+    Returns:
+    None: The function asserts the result of the __add__ method against the expected total price.
+    """
+    product1 = Product("Product A", "Description A", -5.0, 10)
+    product2 = Product("Product B", "Description B", -3.0, 20)
+    total_price = product1 + product2
+    assert total_price == (-5.0 * 10) + (-3.0 * 20)
+
+
+def test_product_addition_with_different_class() -> None:
+    """
+    Test the __add__ method of the Product class when adding a Product instance
+    to an instance of a different class.
+
+    This function tests the addition of a Product instance with an instance of a
+    different class. It asserts that a TypeError is raised.
+
+    Returns:
+    None: The function asserts that a TypeError is raised when adding a Product
+          instance to an instance of a different class.
+    """
+    product1 = Product("Laptop", "High-end gaming laptop", 1500.0, 5)
+    non_product_instance = "Not a Product instance"
+    with pytest.raises(
+        TypeError,
+        match="Объект Not a Product instance не является экземпляром" " класса <class 'src.product.Product'>.",
+    ):
+        product1 + non_product_instance
+
+
+def test_product_addition_with_list() -> None:
+    """
+    Test the __add__ method of the Product class when adding a Product instance
+    to a list.
+
+    This function tests the addition of a Product instance with a list.
+    It asserts that a TypeError is raised.
+
+    Returns:
+    None: The function asserts that a TypeError is raised when adding a Product
+          instance to a list.
+    """
+    product1 = Product("Laptop", "High-end gaming laptop", 1500.0, 5)
+    non_product_instance: list[Any] = []
+    with pytest.raises(TypeError, match="Объект \[\] не является экземпляром класса <class 'src.product.Product'>."):
+        product1 + non_product_instance

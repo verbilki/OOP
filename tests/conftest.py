@@ -2,6 +2,7 @@ import pytest
 
 from src.category import Category
 from src.product import Product
+from src.products_iterator import ProductIterator
 
 
 @pytest.fixture
@@ -88,3 +89,21 @@ def json_data() -> list[dict]:
             ],
         },
     ]
+
+
+@pytest.fixture
+def smartphones() -> Category:
+    Category.product_count = 0
+    return Category(
+        "Smartphones",
+        "Smartphones that make your life better",
+        [
+            Product("Iphone 15", "512GB, Gray space", 210000.0, 8),
+            Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14),
+        ],
+    )
+
+
+@pytest.fixture
+def products_iterator(smartphones: Category) -> ProductIterator:
+    return iter(ProductIterator(smartphones))

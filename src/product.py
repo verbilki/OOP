@@ -1,7 +1,10 @@
+from typing import Any
+
+
 class Product:
     name: str
     description: str
-    price: float
+
     quantity: int
     products: list = []
 
@@ -18,6 +21,30 @@ class Product:
 
     def __str__(self) -> str:
         return f"{self.name.title()}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other: Any):
+        """
+        Magic method to add two products together.
+
+        This method adds the price of the current instance multiplied by its quantity
+        with the price of the other instance multiplied by its quantity.
+        The result is the total price of both products.
+        If the other instance is not of the same class, a TypeError is raised.
+
+        Parameters:
+        ----------
+        other: Product
+            The other instance to add to the current instance.
+
+        Returns: float
+            The total price of the two products.
+
+        Raises: TypeError
+            If the other instance is not of the same class.
+        """
+        if isinstance(other, self.__class__):
+            return (self.__price * self.quantity) + (other.price * other.quantity)
+        raise TypeError(f"Объект {str(other)} не является экземпляром класса {self.__class__}.")
 
     @classmethod
     def new_product(cls, product: dict) -> "Product":
