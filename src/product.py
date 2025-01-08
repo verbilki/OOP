@@ -43,11 +43,11 @@ class Product:
             If the other instance is not of the same class.
         """
         if isinstance(other, self.__class__):
-            return (self.__price * self.quantity) + (other.price * other.quantity)
+            return (self.__price * self.quantity) + (other.__price * other.quantity)
         raise TypeError(f"Объект {str(other)} не является экземпляром класса {self.__class__}.")
 
     @classmethod
-    def new_product(cls, product: dict) -> "Product":
+    def new_product(cls, product: Any) -> "Product":
         if not isinstance(product, dict):
             raise TypeError("Аргумент product должен быть типа dict.")
 
