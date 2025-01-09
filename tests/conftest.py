@@ -1,8 +1,10 @@
 import pytest
 
 from src.category import Category
+from src.lawngrass import LawnGrass
 from src.product import Product
 from src.products_iterator import ProductIterator
+from src.smartphone import Smartphone
 
 
 @pytest.fixture
@@ -107,3 +109,30 @@ def smartphones() -> Category:
 @pytest.fixture
 def products_iterator(smartphones: Category) -> ProductIterator:
     return iter(ProductIterator(smartphones))
+
+
+@pytest.fixture
+def smartphone_test1() -> Smartphone:
+    return Smartphone(
+        name="Galaxy S21",
+        description="Latest Samsung smartphone with high performance",
+        price=799.99,
+        quantity=50,
+        efficiency=0.85,
+        model="S21",
+        memory=128,
+        color="Phantom Gray",
+    )
+
+
+@pytest.fixture
+def lawn_grass_test1() -> LawnGrass:
+    return LawnGrass(
+        name="Green Grass",
+        description="Artificial lawn grass",
+        price=19.99,
+        quantity=100,
+        country="США",
+        germination_period="5 дней",
+        color="Темно-зеленый",
+    )

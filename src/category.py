@@ -24,6 +24,7 @@ class Category:
         if isinstance(new_product, Product):
             self.__products.append(new_product)
             Category.product_count += 1
+            print(f"Товар '{new_product.name}' успешно добавлен в категорию '{self.name}'.")
         else:
             raise TypeError("Товар должен быть типа Product.")
 
@@ -52,7 +53,6 @@ if __name__ == "__main__":
     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
     cat1 = Category(
         "Смартфоны",
-        "Смартфоны, как средство не только коммуникации, "
-        "но и получения дополнительных функций для удобства жизни",
+        "Смартфоны, как средство не только коммуникации, " "но и получения дополнительных функций для удобства жизни",
         [product1, product2],
     )
