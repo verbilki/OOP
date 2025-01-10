@@ -52,6 +52,9 @@ class Category(BaseOrder):
             products_counter += product.quantity
         return products_counter
 
+    def middle_price(self):
+        pass
+
 
 if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 1.0, 5)
