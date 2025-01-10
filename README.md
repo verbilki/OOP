@@ -73,9 +73,13 @@ poetry add python-dotenv
 ### Функционал приложения
 
 1. Реализованы сущности в парадигме объектно-ориентированного программирования:
+   - BaseProduct (модуль src/base_product.py, абстрактный класс-родитель для класса Product),
    - Product (модуль src/product.py),
    - Category (src/category.py)
-   - ProductIterator (src/products_iterator.py). 
+   - ProductIterator (src/products_iterator.py).
+   - MixinPrint (src/mixinprint.py, для вывода в консоль базовых атрибутов сущностей на основе класса Product),
+   - BaseOrder (src/base_order.py, абстрактный родитель для классов Order и Category)
+   - Order (src/order.py, сущность заказа товаров, основанных на классе Product).
 2. Для сущности Product реализован следующий функционал:
    - сериализация,
    - метод класса new_product (добавление продукта через словарь атрибутов),

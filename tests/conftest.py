@@ -116,8 +116,8 @@ def smartphone_test1() -> Smartphone:
     return Smartphone(
         name="Galaxy S21",
         description="Latest Samsung smartphone with high performance",
-        price=799.99,
-        quantity=50,
+        price=80_000,
+        quantity=5,
         efficiency=0.85,
         model="S21",
         memory=128,
@@ -130,7 +130,7 @@ def lawn_grass_test1() -> LawnGrass:
     return LawnGrass(
         name="Green Grass",
         description="Artificial lawn grass",
-        price=19.99,
+        price=2000,
         quantity=100,
         country="США",
         germination_period="5 дней",

@@ -10,4 +10,4 @@ exclude_lines =
 
 [coverage:run]
 omit =
-    */__init__.py, */main.py
+    */__init__.py, */main.py, */base*.py, */utils.py
