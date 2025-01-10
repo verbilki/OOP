@@ -1,10 +1,12 @@
 from typing import Any
 
+from src.baseproduct import BaseProduct
+from src.mixinprint import MixinPrint
 
-class Product:
+
+class Product(BaseProduct, MixinPrint):
     name: str
     description: str
-
     quantity: int
     products: list = []
 
@@ -16,11 +18,11 @@ class Product:
         if quantity <= 0:
             raise ValueError("Недопустимо добавлять товар с нулевым или отрицательным количеством.")
         self.quantity = quantity
-
+        super().__init__()
         self.products.append(self)
 
     def __str__(self) -> str:
-        return f"{self.name.title()}, {self.price} руб. Остаток: {self.quantity} шт."
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other: Any):
         """

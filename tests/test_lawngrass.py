@@ -45,7 +45,7 @@ def test_lawngrass_inherits_product_properties() -> None:
     lawn_grass = LawnGrass(
         name="Eco Lawn Grass",
         description="Eco-friendly lawn grass seed",
-        price=24.99,
+        price=2500,
         quantity=75,
         country="Australia",
         germination_period="5-8 days",
@@ -53,7 +53,7 @@ def test_lawngrass_inherits_product_properties() -> None:
     )
     assert lawn_grass.name == "Eco Lawn Grass"
     assert lawn_grass.description == "Eco-friendly lawn grass seed"
-    assert lawn_grass.price == 24.99
+    assert lawn_grass.price == 2500
     assert lawn_grass.quantity == 75
 
 
