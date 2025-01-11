@@ -40,6 +40,12 @@ def test_create_smartphone_with_valid_attributes() -> None:
 
 
 def test_create_smartphone_with_zero_memory() -> None:
+    """
+    Test that the memory attribute of a Smartphone instance can be set to zero.
+
+    This test verifies that the Smartphone class allows the memory attribute to be set to zero.
+    A ValueError should not be raised in this case.
+    """
     smartphone = Smartphone(
         name="Galaxy S21",
         description="Latest Samsung smartphone with high performance",
@@ -56,10 +62,23 @@ def test_create_smartphone_with_zero_memory() -> None:
 def test_add_smartphone_and_lawngrass_raises_exception(
     smartphone_test1: Smartphone, lawn_grass_test1: LawnGrass
 ) -> None:
+    """
+    Test that adding a Smartphone instance to a LawnGrass instance raises a TypeError.
+
+    This test verifies that the addition operator (+) raises a TypeError when a Smartphone
+    instance is added to a LawnGrass instance.
+    """
     with pytest.raises(TypeError):
         _ = smartphone_test1 + lawn_grass_test1
 
 
 def test_add_smartphone_and_integer_raises_exception(smartphone_test1: Smartphone) -> None:
+
+    """
+    Test that adding a Smartphone instance and an integer raises a TypeError.
+
+    This test verifies that the addition operator (+) raises a TypeError when a Smartphone
+    instance is added to an integer.
+    """
     with pytest.raises(TypeError):
         _ = smartphone_test1 + 1
