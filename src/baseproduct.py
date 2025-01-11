@@ -15,5 +15,5 @@ class BaseProduct(ABC):
 
     @price.setter
     @abstractmethod
-    def price(self, cost):
+    def price(self, cost: float):
         pass

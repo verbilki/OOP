@@ -1,6 +1,6 @@
 ## Объектно-ориентированное программирование
 
-Этот проект представляет собой Домашнее задание по уроку 16.2 (блок '4. Объектно-ориентированное программирование')
+Этот проект представляет собой Домашнее задание по уроку 17.1 (блок '4. Объектно-ориентированное программирование')
 курса по Python на платформе SkyPro ученика Олега Жадана (поток Prof 40.0).
 
 ## Инструкция по установке
@@ -75,18 +75,20 @@ poetry add python-dotenv
 1. Реализованы сущности в парадигме объектно-ориентированного программирования:
    - BaseProduct (модуль src/base_product.py, абстрактный класс-родитель для класса Product),
    - Product (модуль src/product.py),
-   - Category (src/category.py)
-   - ProductIterator (src/products_iterator.py).
+   - Category (src/category.py),
+   - ProductIterator (src/products_iterator.py),
    - MixinPrint (src/mixinprint.py, для вывода в консоль базовых атрибутов сущностей на основе класса Product),
-   - BaseOrder (src/base_order.py, абстрактный родитель для классов Order и Category)
-   - Order (src/order.py, сущность заказа товаров, основанных на классе Product).
+   - BaseOrder (src/base_order.py, абстрактный родитель для классов Order и Category),
+   - Order (src/order.py, сущность заказа товаров, основанных на классе Product),
+   - ProductException (src/product_exception.py, класс для обработки исключений, 
+     связанных с некорректным количеством товара в заказе или категории).
 2. Для сущности Product реализован следующий функционал:
    - сериализация,
    - метод класса new_product (добавление продукта через словарь атрибутов),
    - setter и getter приватного атрибута price (с дополнительной логикой на случай понижения цены),
    - магический метод __add__ для сложения двух продуктов.
-   3. Созданы наследники класса Product: Smartphone и LawnGrass.
-   Smartphone(Product):
+3. Созданы наследники класса Product: Smartphone и LawnGrass.
+Smartphone(Product):
    - производительность (efficiency),
    - модель (model),
    - объем встроенной памяти (memory),

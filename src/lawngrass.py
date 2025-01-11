@@ -5,14 +5,14 @@ class LawnGrass(Product):
     """Class representing a LawnGrass product."""
 
     def __init__(
-            self,
-            name: str,
-            description: str,
-            price: float,
-            quantity: int,
-            country: str,
-            germination_period: str,
-            color: str,
+        self,
+        name: str,
+        description: str,
+        price: float,
+        quantity: int,
+        country: str,
+        germination_period: str,
+        color: str,
     ):
         super().__init__(name, description, price, quantity)
         self.country = country
