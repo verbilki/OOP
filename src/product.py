@@ -15,8 +15,8 @@ class Product(BaseProduct, MixinPrint):
         self.description = description
         self.__price = price
 
-        if quantity <= 0:
-            raise ValueError("Недопустимо добавлять товар с нулевым или отрицательным количеством.")
+        if not quantity:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен.")
         self.quantity = quantity
         super().__init__()
         self.products.append(self)
@@ -49,27 +49,20 @@ class Product(BaseProduct, MixinPrint):
         raise TypeError(f"Объект {str(other)} не является экземпляром класса {self.__class__}.")
 
     @classmethod
-    def new_product(cls, product: Any) -> "Product":
-        if not isinstance(product, dict):
-            raise TypeError("Аргумент product должен быть типа dict.")
+    def new_product(cls, product: dict[str, Any]) -> "Product":
+        required_keys = {"description", "name", "price", "quantity"}
+        if not hasattr(product, "keys"):
+            raise TypeError("Параметр product не является словарем.")
+        if not required_keys <= product.keys():
+            raise ValueError(f"В словаре product должны быть ключи {', '.join(sorted(required_keys))}.")
 
-        if not all(i in sorted(product.keys()) for i in ["description", "name", "price", "quantity"]):
-            raise ValueError("В словаре product должны быть ключи 'description', 'name', 'price', 'quantity'.")
-
-        if any(obj.name == product.get("name") for obj in cls.products):
-            for obj in cls.products:
-                if obj.name == product.get("name"):
-                    if product.get("price") > obj.price:
-                        obj.price = product.get("price")
-                        obj.quantity += product.get("quantity")
-                        return obj
-
-                    else:
-                        obj.quantity += product.get("quantity")
-                        return obj
-
-        else:
-            return cls(**product)
+        existing_product = next((obj for obj in cls.products if obj.name == product["name"]), None)
+        if existing_product:
+            if product["price"] > existing_product.price:
+                existing_product.price = product["price"]
+            existing_product.quantity += product["quantity"]
+            return existing_product
+        return cls(**product)
 
     @property
     def price(self) -> float:

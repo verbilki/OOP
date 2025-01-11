@@ -3,7 +3,8 @@ class MixinPrint:
         print(repr(self))
 
     def __repr__(self) -> str:
-        return (
-            f"{self.__class__.__name__}({self.name},"  # type: ignore[attr-defined]
-            f" {self.description}, {self.price}, {self.quantity})"  # type: ignore[attr-defined]
-        )
+        values = []
+        for key, value in self.__dict__.items():
+            if value is not None:
+                values.append(repr(value))
+        return f"{self.__class__.__name__}({', '.join(values)})"

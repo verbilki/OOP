@@ -14,7 +14,7 @@ def test_product_init(test_product: Product) -> None:
 
 
 def test_product_init_zero_quantity() -> None:
-    with pytest.raises(ValueError, match="Недопустимо добавлять товар с нулевым или отрицательным количеством."):
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен."):
         Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 0)
 
 
